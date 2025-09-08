@@ -1,0 +1,120 @@
+Arduino_settings:
+  SERIAL_PORT_ARDUINO: "COM5"
+  # SERIAL_PORT_UBUNUTU: '/dev/ttyACM1'
+  SERIAL_PORT_UBUNUTU: '/dev/ttyACM1'
+  BAUDRATE_ARDUINO: 115200
+
+#Action space settings (4*5*5=100 actions)
+Action_space_settings:
+  NUMBER_PIEZOS: 8
+  NUMBER_FREQUENCIES: 2 # in MHz
+  NUMBER_AMPLITUDES: 1 # in V
+  TOTAL_ACTIONS: 16
+  MIN_FREQUENCY: 2.3
+  MAX_FREQUENCY: 2.5
+  MIN_AMPLITUDE: 10 # it was 7 
+  MAX_AMPLITUDE: 14 # it was 10
+  SAFE_STEPS: 2 # 5 for real env
+  STEP_DURATION: 0.05 # * env skip steps
+  ENV_SKIP_STEPS: 4
+  RESET_STEP_DURATION: 0.3  # 0.2 before, frequency of the tic tic noise of the piezos
+
+CSRT_Tracker_settings:
+  THRESHOLD: 100  # Threshold for detecting blue bubbles
+  BOX_PADDING: 0.6
+  # TRACKER_TYPE: "CSRT"
+  # TRACKER_MAX_DISTANCE: 10
+  # TRACKER_MAX_ANGLE: 0.5
+  # TRACKER_MAX_ITER: 1000
+  # TRACKER_GOAL_SAMPLE_RATE: 5
+  # TRACKER_MAX_DISTANCE: 10
+  # TRACKER_MAX_ANGLE: 0.5
+
+#Image processing settings
+Image_processing_settings:
+  THRESHOLD_VALUE: 100
+
+# Tektronix settings
+Tektronix_settings:
+  INSTR_DESCRIPTOR: USB0::0x0699::0x034F::C020081::INSTR # USB0::0x0699::0x0353::2222004::INSTR
+  DEFAULT_VPP: 8 #in V
+  DEFAULT_FREQUENCY: 2.0 #in MHz
+
+#Layout
+Layout_settings:
+  IMG_SIZE: 64
+  IMG_DOWNSIZED_SIZE: 64
+  IMG_UPSCALED_SIZE: 1024
+  X_MAX: 64
+  X_MIN: 0
+  Y_MAX: 64
+  Y_MIN: 0
+
+#Target settings
+Target_settings:
+  TARGET_DISTANCE: 5
+
+# Kronos settings
+Kronos_settings:
+  STREAM_URL: "rtsp://10.4.96.106"
+
+# Leica settings
+Leica_settings:
+  SERIAL_PORT_LEICA: "COM4"
+  BAUDRATE_LEICA: 9600
+  SLEEP_TIME: 0.03
+  PIXEL_MULTIPLIER_LEFT_RIGHT: 75
+  PIXEL_MULTIPLIER_UP_DOWN: 85
+
+# General environment settings
+General_environment_settings:
+  TIMEOUT: 200
+  TARGET_REACHED_TOLERANCE: 5 # TODO: Make this a function of the cluster size
+  TARGET_REACHED_TOLERANCE_DEEP_LEARNING: 10
+  COLLISION_TOLERANCE: 1 # TODO: Make this a function of the cluster size # this was one for weekend training
+  COLLISION_RESET_TOLERANCE: 3
+  MIN_DISTANCE_TO_NEW_TARGET: 0.05 # In relative coordinates 
+  MAX_DISTANCE_TARGET_POINT: 0.15 # In relative coordinates
+  MAX_STEPS: 20000
+  MIN_SIZE_BEFORE_ABORT: 0.1 #percentage of initial bubble size of drawing boundary box
+  N_SUBEPISODES: 8 # Number of subepisodes per episode: new target point is chosen every n subepisodes
+  OFFSET_BOUNDS: 5
+  TARGET_POINTS: []
+  UPDATE_RATE_ENV: 5
+  SAVE_RATE_METADATA: 50
+  VERBOSE: 0 # 0: no prints, 2: general, 4: bubble area debug
+  BUBBLE_SIZE: 2
+  SIZE_THRESHOLD: 0.1
+  RANDOM_MOVES: 10
+  RANDOM_MOVE_PROBABILITY: 0.001
+  Reward_Shape:
+    REWARD_COLLISION: -0.5
+    REWARD_TARGET_REACHED: 1
+    REWARD_STEP: 0.03 # Constant that is multiplied with the distance to the target point
+    REWARD_FUNCTION: "inverse"  # "linear", "log", "exp", "inverse", "inverse_squared", "inverse_squared_log", "inverse_squared_exp"
+
+
+Path Planning:
+  max_iter: 1000 # previously 1000
+  goal_sample_rate: 50
+  max_distance: 10 # previously 10
+  max_angle: 0.5
+  safety_threshold: 2
+
+Astar:
+  max_distance: 1000
+  safety_dist: 20
+  n_points: 2000
+
+Deep_learning:
+  random_action_probability: 0.1
+  data_gathering_ts: 0.3
+
+sam_config:
+  sam_model: vit_h
+  sam_checkpoint: "/home/m4/git/DQN_for_Microrobot_control/models/sam_vit_h_4b8939.pth"
+  input_point: []
+  input_label: []
+
+save_path:
+  MAIN_PATH: "/home/m4/Documents/Dreamer_Real_Experiments"

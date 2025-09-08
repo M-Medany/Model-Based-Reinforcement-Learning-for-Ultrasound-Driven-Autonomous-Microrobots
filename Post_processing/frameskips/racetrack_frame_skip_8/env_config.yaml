@@ -1,0 +1,30 @@
+config: scripts/config_sim_no_collision.yaml
+env_name: MicrorobotEnvGameNoCollision
+image_string: binary_images/default_mask_racetrack_segmented.png
+max_envs: 4
+name: !!python/tuple
+- 0
+- 0
+random_env_config:
+  CIRCLES:
+    MAX_RADIUS: 20
+    MIN_RADIUS: 5
+    NUM: 10
+  DILATE_KERNEL: !!python/tuple
+  - 13
+  - 13
+  ERODE_KERNEL: !!python/tuple
+  - 3
+  - 3
+  NARROW_PASSAGES:
+    MAX_DISTANCE: 75
+    MAX_WIDTH: 7
+    MIN_DISTANCE: 10
+    MIN_WIDTH: 2
+    NUM: 5
+  RECTANGLES:
+    MAX_WIDTH: 20
+    MIN_WIDTH: 5
+    NUM: 12
+  REFINE_RATIO: 3
+render_mode: human

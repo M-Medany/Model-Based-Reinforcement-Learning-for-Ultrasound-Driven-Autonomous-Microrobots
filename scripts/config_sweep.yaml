@@ -1,0 +1,93 @@
+Arduino_settings:
+  SERIAL_PORT_ARDUINO: "COM5"
+  # SERIAL_PORT_UBUNUTU: '/dev/ttyACM1'
+  SERIAL_PORT_UBUNUTU: '/dev/ttyACM1'
+  BAUDRATE_ARDUINO: 115200
+
+#Action space settings (4*5*5=100 actions)
+Action_space_settings:
+  NUMBER_PIEZOS: 8
+  NUMBER_FREQUENCIES: 1 # in MHz
+  NUMBER_AMPLITUDES: 1 # in V
+  TOTAL_ACTIONS: 8
+  MIN_FREQUENCY: 2.3
+  MAX_FREQUENCY: 2.9
+  MIN_AMPLITUDE: 6 # it was 7 
+  MAX_AMPLITUDE: 12 # it was 10
+  SAFE_STEPS: 5 # 5 for real env
+  STEP_DURATION: 0 # * env skip steps
+  RESET_STEP_DURATION: 0.25  # 0.2 before, frequency of the tic tic noise of the piezos
+  VPP_OFFSET: -2.5  # How much to decrease vpp during actions
+  VPP_OFFSET_RESET: 1  # How much to extra decrease vpp during reset actions
+
+  SWEEP_MIN: 2.4
+  SWEEP_MAX: 2.9
+
+# General environment settings
+General_environment_settings:
+  TIMEOUT: 200
+  TARGET_REACHED_TOLERANCE: 3.5 # TODO: Make this a function of the cluster size
+  TARGET_REACHED_TOLERANCE_DEEP_LEARNING: 10
+  COLLISION_TOLERANCE: 0
+  COLLISION_RESET_TOLERANCE: 3
+  MIN_DISTANCE_TO_NEW_TARGET: 0.05 # In relative coordinates 
+  MAX_DISTANCE_TARGET_POINT: 0.2 # In relative coordinates
+  MAX_STEPS: 20000
+  MIN_SIZE_BEFORE_ABORT: 0.1  # percentage of initial bubble size of drawing boundary box
+  VERBOSE: 0  # 0: no prints, 2: general, 4: bubble area debug
+  BUBBLE_SIZE: 2
+  SIZE_THRESHOLD: 0.1
+  RANDOM_MOVES: 0
+  RANDOM_MOVE_PROBABILITY: 0
+  SUBEPISODE_LENGTH: 0  # Number of subepisodes per episode: New target point is chosen every n subepisodes. 0 means that the subepisode length is off
+  JPEG_QUALITY: 90
+
+Reward Settings:
+  reward_function: "inverse"
+  reward_target_reached: 10
+  reward_collision: -2
+  reward_step: +0.001  # Needs to be positive! (if using reverse reward function)
+  const: -0.01
+
+Path Planning:
+  max_iter: 1000 # previously 1000
+  goal_sample_rate: 50
+  max_distance: 5 # previously 10
+  safety_threshold: 9
+  depth: 5
+  tol: 0.02  # tolerance for the goal region in relative coordinates (0, 1)
+  max_dist: 0.5 # tolerance before declaring failure in relative coordinates (0, 1)
+  invert_dilation: False
+
+CSRT_Tracker_settings:
+  THRESHOLD: 100  # Threshold for detecting blue bubbles
+  BOX_PADDING: 0.6
+  # TRACKER_TYPE: "CSRT"
+  # TRACKER_MAX_DISTANCE: 10
+  # TRACKER_MAX_ANGLE: 0.5
+  # TRACKER_MAX_ITER: 1000
+  # TRACKER_GOAL_SAMPLE_RATE: 5
+  # TRACKER_MAX_DISTANCE: 10
+  # TRACKER_MAX_ANGLE: 0.5
+
+
+# Tektronix settings
+Tektronix_settings:
+  INSTR_DESCRIPTOR: USB0::0x0699::0x034F::C020081::INSTR # USB0::0x0699::0x0353::2222004::INSTR
+  DEFAULT_VPP: 8 #in V
+  DEFAULT_FREQUENCY: 2.0 #in MHz
+
+#Layout
+Layout_settings:
+  IMG_SIZE: 64
+  IMG_DOWNSIZED_SIZE: 64
+  IMG_UPSCALED_SIZE: 512
+
+sam_config:
+  sam_model: vit_h
+  sam_checkpoint: "/home/m4/git/DQN_for_Microrobot_control/models/sam_vit_h_4b8939.pth"
+  input_point: []
+  input_label: []
+
+save_path:
+  MAIN_PATH: "/home/m4/Documents/Dreamer_Real_Experiments"

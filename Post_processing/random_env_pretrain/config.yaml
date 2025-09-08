@@ -1,0 +1,295 @@
+!!python/object/apply:dreamerv3.embodied.core.config.Config
+- actent: 0.0003
+  actor:
+    act: silu
+    fan: avg
+    inputs: !!python/tuple
+    - deter
+    - stoch
+    layers: 4
+    maxstd: 1.0
+    minstd: 0.1
+    norm: layer
+    outnorm: false
+    outscale: 1.0
+    symlog_inputs: false
+    unimix: 0.01
+    units: 768
+    winit: normal
+  actor_dist_cont: normal
+  actor_dist_disc: onehot
+  actor_grad_cont: backprop
+  actor_grad_disc: reinforce
+  actor_opt:
+    clip: 100.0
+    eps: 1.0e-05
+    lateclip: 0.0
+    lr: 3.0e-05
+    opt: adam
+    warmup: 0
+    wd: 0.0
+  batch_length: 64
+  batch_size: 16
+  cont_head:
+    act: silu
+    dist: binary
+    fan: avg
+    inputs: !!python/tuple
+    - deter
+    - stoch
+    layers: 4
+    norm: layer
+    outnorm: false
+    outscale: 1.0
+    units: 768
+    winit: normal
+  critic:
+    act: silu
+    bins: 255
+    dist: symlog_disc
+    fan: avg
+    inputs: !!python/tuple
+    - deter
+    - stoch
+    layers: 4
+    norm: layer
+    outnorm: false
+    outscale: 0.0
+    symlog_inputs: false
+    units: 768
+    winit: normal
+  critic_opt:
+    clip: 100.0
+    eps: 1.0e-05
+    lateclip: 0.0
+    lr: 3.0e-05
+    opt: adam
+    warmup: 0
+    wd: 0.0
+  critic_slowreg: logprob
+  critic_type: vfunction
+  data_loaders: 8
+  decoder:
+    act: silu
+    cnn: resnet
+    cnn_blocks: 0
+    cnn_depth: 64
+    cnn_keys: image
+    cnn_sigmoid: false
+    fan: avg
+    image_dist: mse
+    inputs: !!python/tuple
+    - deter
+    - stoch
+    minres: 4
+    mlp_keys: $^
+    mlp_layers: 5
+    mlp_units: 1024
+    norm: layer
+    outscale: 1.0
+    resize: stride
+    vector_dist: symlog_mse
+    winit: normal
+  disag_head:
+    act: silu
+    dist: mse
+    fan: avg
+    inputs: !!python/tuple
+    - deter
+    - stoch
+    - action
+    layers: 4
+    norm: layer
+    outscale: 1.0
+    units: 768
+    winit: normal
+  disag_models: 8
+  disag_target: !!python/tuple
+  - stoch
+  dyn_loss:
+    free: 1.0
+    impl: kl
+  encoder:
+    act: silu
+    cnn: resnet
+    cnn_blocks: 0
+    cnn_depth: 64
+    cnn_keys: image
+    fan: avg
+    minres: 4
+    mlp_keys: $^
+    mlp_layers: 5
+    mlp_units: 1024
+    norm: layer
+    resize: stride
+    symlog_inputs: true
+    winit: normal
+  env:
+    atari:
+      actions: all
+      gray: false
+      lives: unused
+      noops: 0
+      repeat: 4
+      resize: opencv
+      size: !!python/tuple
+      - 64
+      - 64
+      sticky: true
+    dmc:
+      camera: -1
+      repeat: 2
+      size: !!python/tuple
+      - 64
+      - 64
+    dmlab:
+      episodic: true
+      repeat: 4
+      size: !!python/tuple
+      - 64
+      - 64
+    loconav:
+      camera: -1
+      repeat: 2
+      size: !!python/tuple
+      - 64
+      - 64
+    minecraft:
+      break_speed: 100.0
+      size: !!python/tuple
+      - 64
+      - 64
+  envs:
+    amount: 4
+    checks: false
+    discretize: 0
+    length: 0
+    parallel: process
+    reset: true
+    restart: true
+  eval_dir: ''
+  expl_behavior: None
+  expl_opt:
+    clip: 100.0
+    eps: 1.0e-05
+    lr: 0.0001
+    opt: adam
+    warmup: 0
+    wd: 0.0
+  expl_rewards:
+    disag: 0.1
+    extr: 1.0
+  filter: .*
+  grad_heads: !!python/tuple
+  - decoder
+  - reward
+  - cont
+  horizon: 333
+  imag_horizon: 15
+  imag_unroll: false
+  jax:
+    debug: false
+    debug_nans: false
+    jit: true
+    logical_cpus: 0
+    metrics_every: 10
+    platform: gpu
+    policy_devices: !!python/tuple
+    - 0
+    prealloc: true
+    precision: float16
+    train_devices: !!python/tuple
+    - 0
+  logdir: /home/mahmoud/logdir2/randomized_environment_and normal env_paralled_gpu_5
+  loss_scales:
+    actor: 1.0
+    cont: 1.0
+    critic: 1.0
+    dyn: 0.5
+    image: 1.0
+    rep: 0.1
+    reward: 1.0
+    slowreg: 1.0
+    vector: 1.0
+  method: name
+  model_opt:
+    clip: 1000.0
+    eps: 1.0e-08
+    lateclip: 0.0
+    lr: 0.0001
+    opt: adam
+    warmup: 0
+    wd: 0.0
+  rep_loss:
+    free: 1.0
+    impl: kl
+  replay: uniform
+  replay_online: false
+  replay_size: 1000000.0
+  retnorm:
+    decay: 0.99
+    impl: perc_ema
+    max: 1.0
+    perchi: 95.0
+    perclo: 5.0
+  return_lambda: 0.95
+  reward_head:
+    act: silu
+    bins: 255
+    dist: symlog_disc
+    fan: avg
+    inputs: !!python/tuple
+    - deter
+    - stoch
+    layers: 4
+    norm: layer
+    outnorm: false
+    outscale: 0.0
+    units: 768
+    winit: normal
+  rssm:
+    act: silu
+    action_clip: 1.0
+    classes: 32
+    deter: 2048
+    fan: avg
+    initial: learned
+    norm: layer
+    stoch: 32
+    unimix: 0.01
+    units: 768
+    unroll: false
+    winit: normal
+  run:
+    actor_addr: ipc:///tmp/5552
+    actor_batch: 12
+    eval_eps: 1
+    eval_every: 1000000.0
+    eval_fill: 0
+    eval_initial: true
+    eval_samples: 1
+    expl_until: 0
+    from_checkpoint: ''
+    log_every: 200
+    log_keys_max: ^$
+    log_keys_mean: (log_entropy)
+    log_keys_sum: ^$
+    log_keys_video: !!python/tuple
+    - image
+    log_zeros: false
+    save_every: 200
+    script: train
+    steps: 10000000000.0
+    sync_every: 10
+    train_fill: 0
+    train_ratio: 32.0
+  seed: 0
+  slow_critic_fraction: 0.02
+  slow_critic_update: 1
+  task: dummy_disc
+  task_behavior: Greedy
+  wrapper:
+    checks: false
+    discretize: 0
+    length: 0
+    reset: true

@@ -1,0 +1,22 @@
+#gymnasium
+numpy
+serial
+pymmcore
+matplotlib
+opencv-python
+scikit-image
+stable-baselines3
+opencv-contrib-python
+#setuptools==65.5.0  # Needed for dreamer
+#wheel==0.38.4  # Needed for dreamer
+torchvision
+# dreamerv3
+git+https://github.com/Pippo809/dreamerv3.git  # Needed for dreamer with hybrid action spaces
+torch
+pyvisa
+git+https://github.com/facebookresearch/segment-anything.git
+pymmcore-plus
+pyserial
+curtsies
+tensorflow_probability
+pygame

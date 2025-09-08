@@ -1,0 +1,47 @@
+Action_space_settings:
+  ENV_SKIP_STEPS: 4
+  MAX_AMPLITUDE: 5.0
+  MIN_AMPLITUDE: 1.0
+  NUMBER_AMPLITUDES: 1
+  NUMBER_FREQUENCIES: 1
+  NUMBER_PIEZOS: 8
+  SAFE_STEPS: 10
+  TOTAL_ACTIONS: 8
+General_environment_settings:
+  BUBBLE_RADIUS: 1.5
+  COLLISION_RESET_TOLERANCE: 1
+  COLLISION_TOLERANCE: 0
+  DILATION: 14
+  FLOW_DIRECTION:
+  - -1
+  - 0
+  MAX_BUBBLE_RADIUS: 1.1
+  MAX_DISTANCE_TARGET_POINT: 1
+  MEAN_BUBBLE_RADIUS: 0.6
+  MIN_BUBBLE_RADIUS: 0.25
+  MIN_DISTANCE_TO_NEW_TARGET: 0.2
+  N_SUBEPISODES: 8
+  RANDOM_MOVE_PROBABILITY: 0.7
+  REDUCE_RADIUS: -0.2
+  SUBEPISODE_LENGTH: 0
+  TARGET_REACHED_TOLERANCE: 1.5
+  VERBOSE: 0
+Image_processing_settings:
+  THRESHOLD_VALUE: 100
+Layout_settings:
+  IMG_DOWNSIZED_SIZE: 64
+  IMG_SIZE: 64
+  IMG_UPSCALED_SIZE: 512
+Multienv:
+  cols: 1
+  rows: 1
+Reward Settings:
+  const: -0.01
+  reward_center: -0.25
+  reward_collision: -0.1
+  reward_function: inverse
+  reward_step: 0.001
+  reward_target_reached: 10
+  reward_termination: -2
+save_path:
+  MAIN_PATH: /home/m4/Documents/Dreamer_Real_Experiments

@@ -1,0 +1,54 @@
+#Action space settings (4*5*5=100 actions)
+Action_space_settings:
+  NUMBER_PIEZOS: 8
+  NUMBER_FREQUENCIES: 1 # in MHz
+  NUMBER_AMPLITUDES: 1 # in V
+  TOTAL_ACTIONS: 8
+  SAFE_STEPS: 10 # 5 for real env
+  ENV_SKIP_STEPS: 4
+  MAX_AMPLITUDE: 5.0
+  MIN_AMPLITUDE: 2.0
+
+Reward Settings:
+  reward_function: "linear"
+  reward_target_reached: 10
+  reward_collision: -0. # penalty for collision
+  reward_termination: -2
+  reward_step: -0.1  # Needs to be positive! (if using reverse reward function)
+  const: -0.0
+  reward_center: -0.0   # penalty for being too in the center of the channel
+
+#Layout
+Layout_settings:
+  IMG_SIZE: 64
+  IMG_DOWNSIZED_SIZE: 64
+  IMG_UPSCALED_SIZE: 512
+
+# General environment settings
+General_environment_settings:
+  DILATION: 16
+  FLOW_DIRECTION: [0, 0]
+  REDUCE_RADIUS: -0.0001
+  COLLISION_TOLERANCE: 0  # We don't care about collisions in the simulation
+  TARGET_REACHED_TOLERANCE: 2
+  COLLISION_RESET_TOLERANCE: 1
+  MIN_DISTANCE_TO_NEW_TARGET: 0.04 # In relative coordinates 
+  MAX_DISTANCE_TARGET_POINT: 0.25 # In relative coordinates
+  N_SUBEPISODES: 8 # Number of subepisodes per episode: new target point is chosen every n subepisodes
+  VERBOSE: 0 # 0: no prints, 2: general, 4: bubble area debug
+  RANDOM_MOVE_PROBABILITY: 0.70
+  BUBBLE_RADIUS: 1.5
+  MIN_BUBBLE_RADIUS: 0.2
+  MEAN_BUBBLE_RADIUS: 0.7
+  MAX_BUBBLE_RADIUS: 1.2
+  SUBEPISODE_LENGTH: 0  # Number of subepisodes per episode: New target point is chosen every n subepisodes. 0 means that the subepisode length is off
+
+Multienv:
+  rows: 1
+  cols: 1
+
+save_path:
+  MAIN_PATH: "/home/m4/Documents/Dreamer_Real_Experiments"
+
+Image_processing_settings:
+  THRESHOLD_VALUE: 100

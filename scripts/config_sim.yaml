@@ -1,0 +1,54 @@
+Arduino_settings:
+  SERIAL_PORT_ARDUINO: "COM5"
+  SERIAL_PORT_UBUNUTU: '/dev/ttyACM0'
+  BAUDRATE_ARDUINO: 115200
+
+#Action space settings (4*5*5=100 actions)
+Action_space_settings:
+  NUMBER_PIEZOS: 4
+  NUMBER_FREQUENCIES: 4 # in MHz
+  NUMBER_AMPLITUDES: 1 # in V
+  TOTAL_ACTIONS: 16
+  SAFE_STEPS: 10 # 5 for real env
+  ENV_SKIP_STEPS: 4
+  MAX_AMPLITUDE: 0.4
+  MIN_AMPLITUDE: 0.1
+
+#Image processing settings
+Image_processing_settings:
+  THRESHOLD_VALUE: 100
+
+# Tektronix settings
+Tektronix_settings:
+  INSTR_DESCRIPTOR: USB0::0x0699::0x034F::C020081::INSTR # USB0::0x0699::0x0353::2222004::INSTR
+  DEFAULT_VPP: 8 #in V
+  DEFAULT_FREQUENCY: 2.0 #in MHz
+
+#Layout
+Layout_settings:
+  IMG_SIZE: 64
+  IMG_DOWNSIZED_SIZE: 64
+  IMG_UPSCALED_SIZE: 512
+
+# General environment settings
+General_environment_settings:
+  TIMEOUT: 200
+  COLLISION_TOLERANCE: 0.1
+  TARGET_REACHED_TOLERANCE: 3
+  COLLISION_RESET_TOLERANCE: 3
+  MIN_DISTANCE_TO_NEW_TARGET: 0.05 # In relative coordinates 
+  MAX_DISTANCE_TARGET_POINT: 0.2 # In relative coordinates
+  N_SUBEPISODES: 8 # Number of subepisodes per episode: new target point is chosen every n subepisodes
+  VERBOSE: 0 # 0: no prints, 2: general, 4: bubble area debug
+  RANDOM_MOVE_PROBABILITY: 0.70
+  BUBBLE_RADIUS: 2
+  MIN_BUBBLE_RADIUS: 0.2
+  MEAN_BUBBLE_RADIUS: 0.5
+  MAX_BUBBLE_RADIUS: 1.2
+
+save_path:
+  MAIN_PATH: "/home/m4/Documents/Dreamer_Real_Experiments"
+
+Multienv:
+  rows: 1
+  cols: 1
