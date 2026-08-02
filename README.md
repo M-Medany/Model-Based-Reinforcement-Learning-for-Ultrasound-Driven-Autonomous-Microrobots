@@ -55,6 +55,26 @@ Active and passive shape-shifting of a microrobot navigating obstacles in a micr
 ![Movie S7](results/Movie%20S7.gif)
 
 
+## Citation
+
+If you use this work, please cite:
+
+> Medany, M., Piglia, L., Achenbach, L. et al. Model-based reinforcement learning for ultrasound-driven autonomous microrobots. *Nature Machine Intelligence* 7, 1076–1090 (2025). https://doi.org/10.1038/s42256-025-01054-2
+
+```bibtex
+@article{medany2025model,
+  title={Model-based reinforcement learning for ultrasound-driven autonomous microrobots},
+  author={Medany, Mahmoud and Piglia, Lorenzo and Achenbach, Liam and Mukkavilli, S Karthik and Ahmed, Daniel},
+  journal={Nature Machine Intelligence},
+  volume={7},
+  number={7},
+  pages={1076--1090},
+  year={2025},
+  publisher={Nature Publishing Group UK London},
+  doi={10.1038/s42256-025-01054-2}
+}
+```
+
 ## Credits & Dependencies  
 This project utilizes and adapts components from the following repositories:  
 
